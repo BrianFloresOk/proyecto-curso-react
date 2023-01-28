@@ -7,12 +7,10 @@ const cors = require('cors')
 const connectDb = require("./database/config")
 
 
-const apiRouter = require("./routes/api")
+const apiRouter = require("./routes/index")
 
 const app = express();
 connectDb()
-
-// view engine setup
 
 
 app.use(logger('dev'));
