@@ -1,0 +1,20 @@
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.buttons__list {
+    width: 30%;
+}
+
+.ul__list {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+
+.ul__list > li {
+    width: 40%;
+}
