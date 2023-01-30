@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+/* import "../src/App.css" */
 
 function Login() {
     return (
-        <>
+        <div className="form__container">
             <h1>Iniciá sesión</h1>
             <form action="">
-                <div>
+                <div className="input__container">
                     <label htmlFor="email">Correo electrónico</label>
                     <input
                         id="email"
@@ -13,7 +14,7 @@ function Login() {
                         placeholder="Ingrese su email"
                     />
                 </div>
-                <div>
+                <div className="input__container">
                     <label
                         htmlFor="password"
                     >
@@ -24,11 +25,13 @@ function Login() {
                         placeholder="Ingrese su contraseña"
                     />
                 </div>
-                <button
-                    type="submit"
-                >
-                    Iniciar sessión
-                </button>
+                <div className="button__container">
+                    <button
+                        type="submit"
+                    >
+                        Iniciar sessión
+                    </button>
+                </div>
             </form>
             <nav>
                 <Link
@@ -42,7 +45,7 @@ function Login() {
                     Olvidé mi password
                 </Link>
             </nav>
-        </>
+        </div>
     );
 }
 

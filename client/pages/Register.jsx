@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 function Register() {
     return (
-        <>
+        <div className="form__container">
             <h1>Creá tu cuenta</h1>
             <form action="" >
-                <div>
+                <div className="input__container">
                     <label htmlFor="name">Nombre</label>
                     <input
                         id="name"
@@ -14,7 +14,7 @@ function Register() {
                         autoComplete='off'
                     />
                 </div>
-                <div>
+                <div className="input__container">
                     <label htmlFor="email">Correo electrónico</label>
                     <input
                         id="email"
@@ -22,7 +22,7 @@ function Register() {
                         placeholder="Ingresá tu email"
                     />
                 </div>
-                <div>
+                <div className="input__container">
                     <label htmlFor="password">Contraseña</label>
                     <input
                         id="password"
@@ -30,7 +30,7 @@ function Register() {
                         placeholder="Ingrese su contraseña"
                     />
                 </div>
-                <div>
+                <div className="input__container">
                     <label htmlFor="password2">Confirma tu contraseña</label>
                     <input
                         id="password2"
@@ -38,11 +38,13 @@ function Register() {
                         placeholder="Ingrese su contraseña"
                     />
                 </div>
-                <button
-                    type="submit"
-                >
-                    Crear cuenta
-                </button>
+                <div className="button__container">
+                    <button
+                        type="submit"
+                    >
+                        Crear cuenta
+                    </button>
+                </div>
             </form>
             <nav>
                 <Link
@@ -51,7 +53,7 @@ function Register() {
                     ¿Estás registrado? Iniciá sesión
                 </Link>
             </nav>
-        </>
+        </div>
     );
 }
 

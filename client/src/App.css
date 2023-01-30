@@ -1,0 +1,43 @@
+.form__container {
+    margin: 0 auto;
+    width: 50%;
+    padding: 20px;
+  }
+
+  .input__container {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input__container > label {
+    margin-bottom: 7px;
+  }
+
+  .input__container > input {
+    width: 80%;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    background: inherit;
+    border-bottom: thin solid lightgrey;
+  }
+
+  .input__container > input:focus {
+    outline: none;
+    border-bottom: thin solid #646cff;
+  }
+
+  .button__container {
+    text-align: center;
+    padding: 10px 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .form__container > nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
