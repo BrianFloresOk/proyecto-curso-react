@@ -3,6 +3,7 @@ const errorResponse = require("../helpers/errorResponse");
 const User = require("../database/models/User");
 const tokenGenerator = require("../helpers/tokenGenerator");
 const generateJWT = require("../helpers/generateJWT");
+const { confirmRegister, forgotPassword } = require("../helpers/sendMails");
 
 module.exports = {
     register: async (req, res) => {
@@ -18,12 +19,20 @@ module.exports = {
                 throw createError(400, "El email ya está registrado")
             };
 
+            const token = tokenGenerator()
+
             user = new User({ name, email, password });
-            user.token = tokenGenerator()
+            user.token = token
 
             const userStore = await user.save();
+            console.log(userStore, "USUARIOSOOOOSOSOOS");
 
             //To do: enviar el email de confirmación
+            await confirmRegister({
+                name: userStore.name,
+                email: userStore.email,
+                token: userStore.token
+            })
 
             return res.status(201).json({
                 status: true,
@@ -116,11 +125,17 @@ module.exports = {
                 throw createError(400, "Email incorrecto")
             }
 
-            user.checked ? user.token = tokenGenerator() : "Usuario inválido";
+            user.checked? user.token = tokenGenerator() : "";
             
-            await user.save();
+            const userStore = await user.save();
 
             //Task to do: Enviar email para reestablecer la contraseña
+            await forgotPassword({
+                name: userStore.name,
+                email: userStore.email,
+                token: userStore.token
+            })
+
 
             return res.status(200).json({
                 status: true,
@@ -133,18 +148,44 @@ module.exports = {
 
     verifyToken: async (req, res) => {
         try {
+
+            const {token} = req.query;
+
+            if(!token) {
+                throw createError(400, "No hay token de petición")
+            }
+
+            const user = await User.findOne({token})
+
+            if(!user) {
+                throw createError(400, "Token inválido")
+            }
+
             return res.status(200).json({
                 status: true,
-                msg: "Verified token"
-
+                msg: "Token validado"
             })
         } catch (error) {
-            return errorResponse(res, error, "Verify token")
+            return errorResponse(res, error, "Verificar token")
         }
     },
 
     changePassword: async (req, res) => {
         try {
+
+            const { token } = req.query;
+            const { password } = req.body;
+
+            if(!password) {
+                throw createError(400, "Password es obligatorio")
+            }
+
+            const user = User.findOne({token})
+
+            user.password = password;
+            user.token = "";
+            await user.save();
+
             return res.status(200).json({
                 status: true,
                 msg: "Password updated"
@@ -154,6 +195,5 @@ module.exports = {
             return errorResponse(res, error, "Change password")
         }
     },
-
 
 }
