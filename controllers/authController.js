@@ -25,7 +25,6 @@ module.exports = {
             user.token = token
 
             const userStore = await user.save();
-            console.log(userStore, "USUARIOSOOOOSOSOOS");
 
             //To do: enviar el email de confirmación
             await confirmRegister({
@@ -36,7 +35,7 @@ module.exports = {
 
             return res.status(201).json({
                 status: true,
-                msg: "User has been register",
+                msg: "Se envió un email con instrucciones para validar tu cuenta",
                 data: userStore
             });
 

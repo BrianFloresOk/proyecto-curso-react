@@ -6,11 +6,12 @@ ul, li {
 
 .buttons__list {
     width: 30%;
+    padding: 0px 10px;
 }
 
 .ul__list {
     display: flex;
-    width: 80%;
+/*     width: 80%; */
     justify-content: center;
     align-items: center;
 }

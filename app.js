@@ -10,13 +10,26 @@ const connectDb = require("./database/config")
 const apiRouter = require("./routes/index")
 
 const app = express();
+/* Configuración de cors */
+const whiteList = [process.env.URL_FRONT]
+const corsOptions = {
+  origin: function(origin, cb) {
+    if(whiteList.includes(origin)) {
+      cb(null, true)
+    } else {
+      cb(new Error("Error de CORS"))
+    }
+  }
+}
+
+/* Conexion a la base de datos */
 connectDb()
 
-
+/* Middlewares de app globales */
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors())
+app.use(cors(corsOptions))
 
 app.use('/api', apiRouter)
 

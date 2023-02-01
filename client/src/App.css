@@ -13,6 +13,8 @@
 
   .input__container > label {
     margin-bottom: 7px;
+    padding: 10px;
+    width: 80%;
   }
 
   .input__container > input {
