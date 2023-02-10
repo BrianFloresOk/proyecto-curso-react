@@ -45,7 +45,7 @@ module.exports = {
                 text: "Seguí las instrucciones para reestablecer tu contaseña",
                 html: `
                 <p>Hola ${name}: Hacé click en restablecer para continuar</p>
-                <a href="${process.env.URL_FRONT}/confirm/${token}">Reestablecer</a>
+                <a href="${process.env.URL_FRONT}/recover-password/${token}">Reestablecer</a>
                 `
             })
 

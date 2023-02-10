@@ -10,11 +10,11 @@ function useForm (initialState = {}) {
             ...formValues,
             [target.name] : target.value
         })
-    }
+    };
 
     const reset = () => {
         setFormValues(initialState)
-    }
+    };
 
     return { 
         formValues,

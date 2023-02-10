@@ -1,24 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import ButtonContainer from '../ButtonContainer/ButtonContainer';
-import estilos from "./styles.module.css"
+import React from "react";
+import { Link } from "react-router-dom";
 
-function Header() {
+export const Header = () => {
     return (
-        <header>
-            <div className={estilos["title__contain"]}>
-                <div className={estilos["image__contain"]}>
-                    <img className={estilos["image"]} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe0eA575w3hMNXL9QL1cq4F5BHAJnYkVblGQ&usqp=CAU" alt="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe0eA575w3hMNXL9QL1cq4F5BHAJnYkVblGQ&usqp=CAU" />
-                </div>
-                    <Link to={"/"}>
-                        <h2>Administrador</h2>
+        <div>
+            <div>
+                <h2>Projects Manager</h2>
+                <input type="text" placeholder="Buscar proyecto..." />
+                <div>
+                    <Link
+                        to='/projects'
+                    >
+                        Proyectos
                     </Link>
+                    <button
+                        type="button"
+                    /* onClick={closeSession} */
+                    >
+                        Cerrar sesión
+                    </button>
+                </div>
             </div>
-            
-            <ButtonContainer />
-
-        </header>
+        </div>
     );
-}
-
-export default Header;
+};

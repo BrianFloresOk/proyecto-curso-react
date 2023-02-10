@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Alert } from "../components/Alert/Alert";
-import useForm from "../hooks/useForm";
+import useForm from "../src/hooks/useForm";
 import { clientAxios } from "../src/config/clientAxios";
 import Swal from 'sweetalert2';
 
@@ -50,14 +50,6 @@ function Register() {
 
             console.log(data.msg);
 
-/*             if (!data) {
-                Swal.fire({
-                    icon: "info",
-                    title: "Gracias por registrarte",
-                    text: data.msg
-                });
-            } */
-
             Swal.fire({
                 icon: "info",
                 title: "Gracias por registrarte",
@@ -68,7 +60,7 @@ function Register() {
 
         } catch (error) {
             console.error(error);
-            handleShowAlert(error.response.data.msg)
+            handleShowAlert(error.response?.data.msg)
             reset()
         }
     };
@@ -84,16 +76,20 @@ function Register() {
     }
 
     return (
-        <div className="form__container">
-            <h1>Creá tu cuenta</h1>
+        <div className="w-1/2 translate-x-1/2 mt-5">
+            <h1
+                className="text-gray-900 font-black text-3xl capitalize text-center"
+            >Creá tu cuenta</h1>
             {
                 alert.msg && <Alert {...alert} />
             }
-            <form action=""
+            <form
                 onSubmit={handleSubmit}
             >
-                <div className="input__container">
-                    <label htmlFor="name">Nombre</label>
+                <div className="flex flex-col mt-4">
+                    <label htmlFor="name"
+                        className="block text-gray-700 text-sm font-bold mb-2" 
+                    >Nombre</label>
                     <input
                         id="name"
                         type="text"
@@ -102,10 +98,12 @@ function Register() {
                         name="name"
                         value={name}
                         onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+
                     />
                 </div>
-                <div className="input__container">
-                    <label htmlFor="email">Correo electrónico</label>
+                <div className="flex flex-col mt-4">
+                    <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Correo electrónico</label>
                     <input
                         id="email"
                         type="email"
@@ -113,10 +111,12 @@ function Register() {
                         name="email"
                         value={email}
                         onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+
                     />
                 </div>
-                <div className="input__container">
-                    <label htmlFor="password">Contraseña</label>
+                <div className="flex flex-col mt-4">
+                    <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
                     <input
                         id="password"
                         type="password"
@@ -124,10 +124,12 @@ function Register() {
                         name="password"
                         value={password}
                         onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+
                     />
                 </div>
-                <div className="input__container">
-                    <label htmlFor="password2">Confirma tu contraseña</label>
+                <div className="flex flex-col mt-4">
+                    <label htmlFor="password2" className="block text-gray-700 text-sm font-bold mb-2">Confirma tu contraseña</label>
                     <input
                         id="password2"
                         type="password"
@@ -135,12 +137,15 @@ function Register() {
                         name="password2"
                         value={password2}
                         onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+
                     />
                 </div>
-                <div className="button__container">
+                <div className="text-center mt-4">
                     <button
                         type="submit"
                         disabled={sending}
+                        className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
                     >
                         Crear cuenta
                     </button>
@@ -148,7 +153,7 @@ function Register() {
             </form>
             <nav>
                 <Link
-                    to={'/login'}
+                    to={'/'}
                 >
                     ¿Estás registrado? Iniciá sesión
                 </Link>

@@ -1,7 +1,6 @@
 require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
-const path = require('path');
 const logger = require('morgan');
 const cors = require('cors')
 const connectDb = require("./database/config")
@@ -18,6 +17,7 @@ const corsOptions = {
       cb(null, true)
     } else {
       cb(new Error("Error de CORS"))
+      console.log("Error de corssss");
     }
   }
 }
@@ -29,7 +29,7 @@ connectDb()
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors(corsOptions))
+app.use(cors())
 
 app.use('/api', apiRouter)
 

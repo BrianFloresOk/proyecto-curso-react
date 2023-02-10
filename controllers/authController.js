@@ -57,11 +57,11 @@ module.exports = {
                 throw createError(403, "Credenciales inválidas | EMAIL")
             };
 
-/*                 User.findOne({email}, function(err, user) {
-                    if (err) return handleError(err);
-                    console.log(user);
-                    }); */
-           
+            /*                 User.findOne({email}, function(err, user) {
+                                if (err) return handleError(err);
+                                console.log(user);
+                                }); */
+
             if (!user.checked) {
                 throw createError(403, "Tu cuenta no ha sido confirmada")
             };
@@ -75,11 +75,11 @@ module.exports = {
                 msg: "User has been logged",
                 user: {
                     nombre: user.name,
-                    email: user.email,
-                    token: generateJWT({
-                        id: user._id
-                    })
-                }
+                    _id: user._id,
+                },
+                token: generateJWT({
+                    id: user._id
+                })
             });
 
         } catch (error) {
@@ -96,7 +96,7 @@ module.exports = {
                 throw createError(400, "Missing token")
             };
 
-            const user = await User.findOne({token})
+            const user = await User.findOne({ token })
             if (!user) {
                 throw createError(400, "Invalit token")
             };
@@ -108,7 +108,7 @@ module.exports = {
 
             return res.status(201).json({
                 status: true,
-                msg: "User register successfully"
+                msg: "Usuario validado"
             })
         } catch (error) {
             return errorResponse(res, error, "Checked")
@@ -119,13 +119,13 @@ module.exports = {
         const { email } = req.body;
 
         try {
-            let user = await User.findOne({email});
-            if(!user) {
+            let user = await User.findOne({ email });
+            if (!user) {
                 throw createError(400, "Email incorrecto")
             }
 
-            user.checked? user.token = tokenGenerator() : "";
-            
+            user.token = tokenGenerator()
+
             const userStore = await user.save();
 
             //Task to do: Enviar email para reestablecer la contraseña
@@ -148,15 +148,15 @@ module.exports = {
     verifyToken: async (req, res) => {
         try {
 
-            const {token} = req.query;
+            const { token } = req.query;
 
-            if(!token) {
+            if (!token) {
                 throw createError(400, "No hay token de petición")
             }
 
-            const user = await User.findOne({token})
+            const user = await User.findOne({ token })
 
-            if(!user) {
+            if (!user) {
                 throw createError(400, "Token inválido")
             }
 
@@ -175,20 +175,23 @@ module.exports = {
             const { token } = req.query;
             const { password } = req.body;
 
-            if(!password) {
+            if (!password) {
                 throw createError(400, "Password es obligatorio")
             }
 
-            const user = User.findOne({token})
+            let user = User.findOne({ token })
+            if (!user) {
+                throw createError(400, "El token es inválido")
+            }
 
             user.password = password;
             user.token = "";
+
             await user.save();
 
             return res.status(200).json({
                 status: true,
-                msg: "Password updated"
-
+                msg: "Contraseña actualizada correctamente"
             })
         } catch (error) {
             return errorResponse(res, error, "Change password")
