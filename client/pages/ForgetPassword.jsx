@@ -55,8 +55,10 @@ function ForgerPassword() {
 
 
     return (
-        <>
-            <h1 >
+        <div className="w-1/2 translate-x-1/2 mt-5">
+            <h1 
+                className="text-gray-50 font-black text-3xl capitalize text-center mt-5 mb-10"
+            >
                 Recupera tu acceso
             </h1>
             {
@@ -67,9 +69,14 @@ function ForgerPassword() {
                 action=""
                 onSubmit={handleSubmit}
                 noValidate
+                className="px-10 py-5"
             >
-                <div>
-                    <label htmlFor="email" >
+                <div
+                    className="flex flex-col mt-4"
+                >
+                    <label htmlFor="email" 
+                        className="block text-gray-50 text-sm font-bold mb-2"
+                    >
                         Correo electrónico
                     </label>
                     <input
@@ -79,28 +86,34 @@ function ForgerPassword() {
                         name="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     />
                 </div>
-                <button
-                    type="submit"
-                    disabled={sending}
-                >
-                    Recuperar contraseña
-                </button>
+                <div className="text-center mt-4">
+                    <button
+                        type="submit"
+                        disabled={sending}
+                        className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                    >
+                        Recuperar contraseña
+                    </button>
+                </div>
             </form>
-            <nav>
+            <nav className="md:flex md:justify-between">
                 <Link
                     to={"/register"}
+                    className="text-gray-50"
                 >
                     ¿No tenés una cuenta? Registrate
                 </Link>
                 <Link
                     to={"/login"}
+                    className="text-gray-50"
                 >
                     ¿Estás registrado? Iniciá sesión
                 </Link>
             </nav>
-        </>
+        </div>
     );
 }
 

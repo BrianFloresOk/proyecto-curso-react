@@ -78,17 +78,18 @@ function Register() {
     return (
         <div className="w-1/2 translate-x-1/2 mt-5">
             <h1
-                className="text-gray-900 font-black text-3xl capitalize text-center"
+                className="text-gray-50 font-black text-3xl capitalize text-center mt-5 mb-10"
             >Creá tu cuenta</h1>
             {
                 alert.msg && <Alert {...alert} />
             }
             <form
                 onSubmit={handleSubmit}
+                className="px-10 py-5"
             >
                 <div className="flex flex-col mt-4">
                     <label htmlFor="name"
-                        className="block text-gray-700 text-sm font-bold mb-2" 
+                        className="block text-gray-50 text-sm font-bold mb-2 " 
                     >Nombre</label>
                     <input
                         id="name"
@@ -103,7 +104,7 @@ function Register() {
                     />
                 </div>
                 <div className="flex flex-col mt-4">
-                    <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Correo electrónico</label>
+                    <label htmlFor="email" className="block text-gray-50 text-sm font-bold mb-2">Correo electrónico</label>
                     <input
                         id="email"
                         type="email"
@@ -116,7 +117,7 @@ function Register() {
                     />
                 </div>
                 <div className="flex flex-col mt-4">
-                    <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
+                    <label htmlFor="password" className="block text-gray-50 text-sm font-bold mb-2">Contraseña</label>
                     <input
                         id="password"
                         type="password"
@@ -129,7 +130,7 @@ function Register() {
                     />
                 </div>
                 <div className="flex flex-col mt-4">
-                    <label htmlFor="password2" className="block text-gray-700 text-sm font-bold mb-2">Confirma tu contraseña</label>
+                    <label htmlFor="password2" className="block text-gray-50 text-sm font-bold mb-2">Confirma tu contraseña</label>
                     <input
                         id="password2"
                         type="password"
@@ -154,6 +155,7 @@ function Register() {
             <nav>
                 <Link
                     to={'/'}
+                    className="text-gray-50"
                 >
                     ¿Estás registrado? Iniciá sesión
                 </Link>

@@ -16,15 +16,20 @@ function ProtectedLayout() {
                 auth._id ? (
                     <div>
                         <Header />
-                        <div>
+                        <div
+                            className="flex w-full h-screen container-lg"
+                        >
                             <Sidebar />
-                            <main>
-                                <Outlet />
+                            <main
+                            className="w-10/12"
+                                >
+                                <Outlet 
+                                />
                             </main>
                         </div>
                     </div>
                 ) : (
-                    <Navigate to="/login" />
+                    <Navigate to="/" />
                 )
             }
         </>

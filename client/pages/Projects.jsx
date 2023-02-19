@@ -11,11 +11,17 @@ export const Projects = () => {
     }, [])
 
     return (
-        <>
-            <h1>
+        <div
+            className=''
+        >
+            <h1 
+                className="text-gray-50 font-black text-3xl capitalize text-center mt-5 mb-10"
+            >
                 Proyectos
             </h1>
-            <div>
+            <div
+
+            >
                 {
                     loading
                         ?
@@ -28,6 +34,6 @@ export const Projects = () => {
                             <p>No hay proyectos agregados</p>
                 }
             </div>
-        </>
+        </div>
     )
 }

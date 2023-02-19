@@ -65,7 +65,8 @@ function Login() {
 
     return (
         <div className="w-1/2 translate-x-1/2 mt-5">
-            <h1 className="text-gray-900 font-black text-3xl capitalize text-center">Iniciá sesión</h1>
+            <h1 className="text-gray-50 font-black text-3xl capitalize text-center mt-5 mb-10"
+            >Iniciá sesión</h1>
 
             {
                 alert.msg && <Alert {...alert}/>
@@ -76,8 +77,8 @@ function Login() {
                 noValidate
                 className="my-10"
             >
-                <div className="flex flex-col mt-4">
-                    <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Correo electrónico</label>
+                <div className="flex flex-col mt-4" >
+                    <label htmlFor="email" className="block text-gray-50 text-sm font-bold mb-2">Correo electrónico</label>
                     <input
                         id="email"
                         type="email"
@@ -91,7 +92,7 @@ function Login() {
                 <div className="flex flex-col mt-4">
                     <label
                         htmlFor="password"
-                        className="block text-gray-700 text-sm font-bold mb-2"
+                        className="block text-gray-50 text-sm font-bold mb-2"
                     >
                         Contraseña</label>
                     <input
@@ -117,11 +118,13 @@ function Login() {
             <nav className="md:flex md:justify-between">
                 <Link
                     to={'/register'}
+                    className="text-gray-50"
                 >
                     ¿No tenés una cuenta? Registrate
                 </Link>
                 <Link
                     to={'/forget-password'}
+                    className="text-gray-50"
                 >
                     Olvidé mi password
                 </Link>
